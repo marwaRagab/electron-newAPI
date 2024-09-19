@@ -2,12 +2,13 @@
 
 namespace App\Repositories;
 
+use App\Models\Role;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Interfaces\RoleRepositoryInterface;
-use App\Models\Role;
 
 class RoleRepository implements RoleRepositoryInterface
 {
@@ -36,6 +37,17 @@ class RoleRepository implements RoleRepositoryInterface
         $data->created_by = Auth::user()->id;
         $data->updated_by = Auth::user()->id;
         $data->save();
+
+        if($request->has('permission'))
+        {
+            foreach($request->permission as $item)
+            {
+                DB::table('role_permissions')->insert([
+                    'role_id' => $data->id,  // assuming 1 is the role ID
+                    'permission_id' => $item,  // assuming 2 is the permission ID
+                ]);
+            }
+        }
         // return Permission::create($request->all());
         return $data;
     }
@@ -53,6 +65,17 @@ class RoleRepository implements RoleRepositoryInterface
         $data->name_en = $request->name_en ?? $data->name_en;
         $data->updated_by = Auth::user()->id;
         $data->save();
+        if($request->has('permission'))
+        {
+            foreach($request->permission as $item)
+            {
+                DB::table('role_permissions')->insert([
+                    'role_id' => $data->id,  // assuming 1 is the role ID
+                    'permission_id' => $item,  // assuming 2 is the permission ID
+                ]);
+            }
+        }
+        
         return $data;
     }
 

@@ -6,10 +6,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\BankController;
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CourtController;
 use App\Http\Controllers\GovernorateController;
+use App\Http\Controllers\InstallmentPercentageController;
+use App\Http\Controllers\MinistryPercentageController;
 use App\Http\Controllers\NationalityController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PoliceStationController;
+use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RoleController;
 
 /*
@@ -29,19 +35,11 @@ Route::post('/login', [LoginController::class, 'login']); // Login and get a tok
 Route::post('/reset-password', [LoginController::class, 'reset_password']); // Reset password
 
 
-Route::middleware('auth:sanctum')->get('/user', action: function (Request $request) {
-    dd("dd");
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', action: function (Request $request) {
+//     dd("dd");
+//     return $request->user();
+// });
 
-
-
-// Route::get('get-nationalities', [NationalityController::class, 'getall']);
-// Route::get('/nationality', [NationalityController::class, 'index']);
-// Route::post('/nationality', [NationalityController::class, 'store']);
-// Route::get('/nationality/{product}/edit', [NationalityController::class, 'edit']);
-// Route::put('/nationality/{product}', [NationalityController::class, 'update']);
-// Route::apiResource('user', LoginController::class);
 // New API resource group with middleware
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('nationalities', NationalityController::class);
@@ -52,5 +50,16 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('roles', RoleController::class);
     Route::apiResource('governorates', GovernorateController::class);
     Route::apiResource('courts', CourtController::class);
-    
+    Route::apiResource( 'banks', BankController::class);
+    Route::apiResource( 'branches', BranchController::class);
+    Route::apiResource( 'installmentPercentage', InstallmentPercentageController::class);
+    Route::apiResource( 'ministryPercentage', MinistryPercentageController::class);
+    Route::apiResource( 'policeSatations', PoliceStationController::class);
+    Route::apiResource( 'regions', RegionController::class);
+    Route::get('/users',[LoginController::class, 'getall']);
+    Route::get('/users/show/{id}',[LoginController::class, 'show']);
+    Route::get('/users/edit/{id}',[LoginController::class, 'edit']);
+    Route::put('/users/{id}', [LoginController::class, 'update']);
+    Route::delete('/users/{id}', [LoginController::class, 'destroy']);
+    Route::post('/register',[LoginController::class, 'register']);
 });

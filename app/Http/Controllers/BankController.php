@@ -27,9 +27,9 @@ class BankController extends Controller
     public function index()
     {
         // dd("dd");
-        $permissions = $this->BankRepository->index();
+        $data = $this->BankRepository->index();
         // return response()->json($permissions);
-        return $this->respondSuccess($permissions, 'Get Data successfully.');
+        return $this->respondSuccess($data, 'Get Data successfully.');
     }
 
     public function getall(Request $request)

@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ministry__percentages');
+        Schema::dropIfExists('ministry_percentages');
     }
 };

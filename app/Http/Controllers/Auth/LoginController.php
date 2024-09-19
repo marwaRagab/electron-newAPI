@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
+
+    public function getall()
+    {
+        // dd("dd");
+        $data = User::all();
+        // return response()->json($permissions);
+        return $this->respondSuccess($data, 'Get Data successfully.');
+    }
     public function login(Request $request)
     {
         $messages = [
@@ -180,5 +188,89 @@ class LoginController extends Controller
         Auth::user()->tokens()->delete();;
         // $request->user()->tokens()->delete();
         return $this->respondSuccess(null, trans('تسجيل خروج'));
+    }
+
+    // register
+
+    public function register(Request $request)
+    {
+        $messages = [
+            'email.required' => 'الايميل  مطلوب.',
+            'password.required' => 'كلمة المرور مطلوبة.',
+        ];
+
+        $validatedData = Validator::make($request->all(), [
+            'name_ar' =>'required',
+            'name_en' =>'required',
+            'phone' =>'required',
+            'role_id' =>'required',
+            'branch_id' =>'required',
+            'email' => 'required|email',
+            'password' => 'required',
+        ], $messages);
+
+        if ($validatedData->fails()) {
+            return $this->respondError('Validation Error.', $validatedData->errors(), 400);
+        }
+
+        $data = new User;
+        $data->name_ar = $request->name_ar;
+        $data->name_en = $request->name_en;
+        $data->username  =$request->username ?? null;
+        $data->phone = $request->phone;
+        $data->email = $request->email;
+        $data->notes  =$request->notes ?? null;
+        $data->active  =1;
+        $data->password =Hash::make($request->password);
+        $data->role_id = $request->role_id;
+        $data->branch_id = $request->branch_id;
+        $data->created_by = Auth::user()->id;
+        $data->updated_by = Auth::user()->id;
+        $data->save();
+
+        return $this->respondSuccess($data, 'insert user successfully.');
+    }
+    public function  show($id)
+    { 
+        $data = User::findOrFail($id);
+        return $this->respondSuccess($data, 'Get Data successfully.');
+    }
+
+    public function  edit($id)
+    {
+        // return User::findOrFail($id);
+        $data = User::findOrFail($id);
+        return $this->respondSuccess($data, 'Get Data successfully.');
+    }
+
+    
+
+    public function update($id, Request $request)
+    {
+        $data = User::findOrFail($id);
+        $data->name_ar = $request->name_ar;
+        $data->name_en = $request->name_en;
+        $data->username  =$request->username ?? null;
+        $data->phone = $request->phone;
+        $data->email = $request->email;
+        $data->notes  =$request->notes ?? null;
+        $data->active  =$request->active;
+        $data->password =Hash::make($request->password);
+        $data->role_id = $request->role_id;
+        $data->branch_id = $request->branch_id;
+        $data->updated_by = Auth::user()->id;
+        $data->save();
+      
+        return $this->respondSuccess($data, 'update user successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $data = user::findOrFail($id);
+
+        // Perform soft delete
+        $data->delete();
+        // return $data;
+        return $this->respondSuccess($data, 'delete user successfully.');
     }
 }

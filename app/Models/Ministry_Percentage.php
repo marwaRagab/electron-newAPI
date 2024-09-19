@@ -9,4 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Ministry_Percentage extends Model
 {
     use HasFactory,SoftDeletes;
+
+    protected $table = 'ministry_percentages';
+
 }
