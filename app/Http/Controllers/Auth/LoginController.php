@@ -23,12 +23,14 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $messages = [
-            'email.required' => 'الايميل  مطلوب.',
+            // 'email.required' => 'الايميل  مطلوب.',
+            'username.required' => 'الايميل  مطلوب.',
             'password.required' => 'كلمة المرور مطلوبة.',
         ];
 
         $validatedData = Validator::make($request->all(), [
-            'email' => 'required|email',
+            // 'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required',
         ], $messages);
 
@@ -38,7 +40,7 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
         // Check if the user exists
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('username', $request->username)->first();
         if (!$user || !Hash::check($password, $user->password)) {
             return response()->json(['error' => 'Invalid credentials'], 401);
         }
@@ -46,7 +48,7 @@ class LoginController extends Controller
         if ($user->active !== '1') {
             return $this->respondError('Validation Error.', ['not authorized' => ['لا يسمح لك بدخول النظام']], 400);
         }
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
         // Check if the user has logged in within the last two hours
         // $sixHoursAgo = now()->subHours(6);
         if (Auth::attempt($credentials)) {

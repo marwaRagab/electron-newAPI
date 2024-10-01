@@ -33,7 +33,7 @@ use App\Http\Controllers\RoleController;
 
 Route::post('/login', [LoginController::class, 'login']); // Login and get a token
 Route::post('/reset-password', [LoginController::class, 'reset_password']); // Reset password
-Route::apiResource( 'regions', RegionController::class);
+// Route::apiResource( 'regions', RegionController::class);
 
 // Route::middleware('auth:sanctum')->get('/user', action: function (Request $request) {
 //     dd("dd");
@@ -55,7 +55,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource( 'installmentPercentage', InstallmentPercentageController::class);
     Route::apiResource( 'ministryPercentage', MinistryPercentageController::class);
     Route::apiResource( 'policeSatations', PoliceStationController::class);
-    // Route::apiResource( 'regions', RegionController::class);
+    Route::apiResource( 'regions', RegionController::class);
     Route::get('/users',[LoginController::class, 'getall']);
     Route::get('/users/show/{id}',[LoginController::class, 'show']);
     Route::get('/users/edit/{id}',[LoginController::class, 'edit']);
