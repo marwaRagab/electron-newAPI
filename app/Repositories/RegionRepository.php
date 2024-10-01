@@ -18,7 +18,7 @@ class RegionRepository implements RegionRepositoryInterface
 
     public function index()
     {
-        return Region::all();
+        return Region::with('government')->get();
        
     }
 
@@ -38,8 +38,8 @@ class RegionRepository implements RegionRepositoryInterface
         $data->name_ar = $request->name_ar;
         $data->name_en = $request->name_en;
         $data->governorate_id = $request->governorate_id;
-        $data->created_by = Auth::user()->id;
-        $data->updated_by = Auth::user()->id;
+        // $data->created_by = Auth::user()->id;
+        // $data->updated_by = Auth::user()->id;
         $data->save();
         // return Nationality::create($request->all());
         return $data;

@@ -9,4 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Governorate extends Model
 {
     use HasFactory ,SoftDeletes;
+
+    public function region()
+    {
+        return $this->hasMany(Region::class );
+    }
 }
