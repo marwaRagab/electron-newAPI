@@ -224,10 +224,10 @@ class LoginController extends Controller
         $data->notes  =$request->notes ?? null;
         $data->active  =1;
         $data->password =Hash::make($request->password);
-        $data->role_id = $request->role_id;
-        $data->branch_id = $request->branch_id;
-        $data->created_by = Auth::user()->id;
-        $data->updated_by = Auth::user()->id;
+        $data->role_id = $request->role_id ?? null;
+        $data->branch_id = $request->branch_id ?? null;
+        $data->created_by = Auth::user()->id ?? null;
+        $data->updated_by = Auth::user()->id ?? null;
         $data->save();
 
         return $this->respondSuccess($data, 'insert user successfully.');
