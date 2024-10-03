@@ -20,7 +20,7 @@ class GovernorateRepository implements GovernorateRepositoryInterface
 
     public function index()
     {
-        return Governorate::all();
+        return Governorate::withCount('region')->get();
        
     }
 
