@@ -41,7 +41,7 @@ class BankRepository implements BankRepositoryInterface
         $data->authorized_signatory_1 = $request->authorized_signatory_1;
         $data->authorized_signatory_2 = $request->authorized_signatory_2;
         $data->authorized_signatory_3 = $request->authorized_signatory_3;
-        $data->active = $request->active;
+        // $data->active = $request->active;
         $data->created_by = Auth::user()->id;
         $data->updated_by = Auth::user()->id;
         $data->save();
@@ -67,7 +67,7 @@ class BankRepository implements BankRepositoryInterface
         $data->authorized_signatory_1 = $request->authorized_signatory_1 ?? $data->authorized_signatory_1;
         $data->authorized_signatory_2 = $request->authorized_signatory_2 ?? $data->authorized_signatory_2;
         $data->authorized_signatory_3 = $request->authorized_signatory_3 ?? $data->authorized_signatory_3;
-        $data->active = $request->active ?? $data->active;
+        // $data->active = $request->active ?? $data->active;
         $data->updated_by = Auth::user()->id;
         $data->save();
         return $data;
