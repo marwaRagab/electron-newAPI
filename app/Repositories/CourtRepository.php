@@ -17,7 +17,7 @@ class CourtRepository implements CourtRepositoryInterface
 
     public function index()
     {
-        return Court::all();
+        return Court::with('government')->get();
        
     }
 

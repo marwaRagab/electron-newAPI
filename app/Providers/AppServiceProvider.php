@@ -9,6 +9,7 @@ use App\Repositories\CourtRepository;
 use App\Repositories\BranchRepository;
 use App\Repositories\RegionRepository;
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\MinistryRepository;
 use App\Repositories\PermissionRepository;
 use App\Interfaces\BankRepositoryInterface;
 use App\Interfaces\RoleRepositoryInterface;
@@ -18,14 +19,15 @@ use App\Interfaces\CourtRepositoryInterface;
 use App\Interfaces\BranchRepositoryInterface;
 use App\Interfaces\RegionRepositoryInterface;
 use App\Repositories\PoliceStationRepository;
+use App\Interfaces\MinistryRepositoryInterface;
 use App\Interfaces\PermissionRepositoryInterface;
 use App\Interfaces\GovernorateRepositoryInterface;
-use App\Interfaces\InstallmentPercentageRepositoryInterface;
-use App\Interfaces\MinistryPercentageRepositoryInterface;
 use App\Interfaces\NationalityRepositoryInterface;
+use App\Repositories\MinistryPercentageRepository;
 use App\Interfaces\PoliceStationRepositoryInterface;
 use App\Repositories\InstallmentPercentageRepository;
-use App\Repositories\MinistryPercentageRepository;
+use App\Interfaces\MinistryPercentageRepositoryInterface;
+use App\Interfaces\InstallmentPercentageRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -47,7 +49,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(RegionRepositoryInterface::class, RegionRepository::class);
         $this->app->bind(InstallmentPercentageRepositoryInterface::class, InstallmentPercentageRepository::class);
         $this->app->bind(MinistryPercentageRepositoryInterface::class, MinistryPercentageRepository::class);
-       
+        $this->app->bind(MinistryRepositoryInterface::class, MinistryRepository::class);
+
     }
 
     /**
