@@ -14,4 +14,8 @@ class Governorate extends Model
     {
         return $this->hasMany(Region::class );
     }
+    public function court()
+    {
+        return $this->hasMany(related: Court::class );
+    }
 }

@@ -11,6 +11,7 @@ use App\Http\Requests\StoreMinistryRequest;
 use App\Http\Requests\UpdateMinistryRequest;
 use App\Interfaces\MinistryRepositoryInterface;
 
+
 class MinistryController extends Controller
 {
     /**

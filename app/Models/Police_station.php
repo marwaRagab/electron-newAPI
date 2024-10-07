@@ -9,4 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Police_station extends Model
 {
     use HasFactory,SoftDeletes;
+    public function region()
+    {
+        return $this->belongsTo(Region::class,'region_id');
+    }
 }

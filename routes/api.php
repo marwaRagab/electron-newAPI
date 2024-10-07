@@ -17,6 +17,7 @@ use App\Http\Controllers\NationalityController;
 use App\Http\Controllers\PoliceStationController;
 use App\Http\Controllers\MinistryPercentageController;
 use App\Http\Controllers\InstallmentPercentageController;
+use App\Http\Controllers\MinistryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource( 'ministryPercentage', MinistryPercentageController::class);
     Route::apiResource( 'policeSatations', PoliceStationController::class);
     Route::apiResource( 'regions', RegionController::class);
+    Route::apiResource( 'ministries', MinistryController::class);
     Route::get('/users',[LoginController::class, 'getall']);
     Route::get('/users/show/{id}',[LoginController::class, 'show']);
     Route::get('/users/edit/{id}',[LoginController::class, 'edit']);

@@ -12,4 +12,9 @@ class Ministry_Percentage extends Model
 
     protected $table = 'ministry_percentages';
 
+    public function ministry()
+    {
+        return $this->belongsTo(Ministry::class ,'ministry_percentage_id');
+    }
+
 }
