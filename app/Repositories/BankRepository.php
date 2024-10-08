@@ -15,7 +15,7 @@ class BankRepository implements BankRepositoryInterface
     
     public function index()
     {
-        return Bank::all();
+        return Bank::with( 'user')->get();
        
     }
 

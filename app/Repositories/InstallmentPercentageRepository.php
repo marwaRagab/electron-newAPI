@@ -6,8 +6,8 @@ use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
-use App\Interfaces\InstallmentPercentageRepositoryInterface;
 use App\Models\Installment_Percentage;
+use App\Interfaces\InstallmentPercentageRepositoryInterface;
 
 
 class InstallmentPercentageRepository implements InstallmentPercentageRepositoryInterface
@@ -15,7 +15,7 @@ class InstallmentPercentageRepository implements InstallmentPercentageRepository
     
     public function index()
     {
-        return Installment_Percentage::all();
+        return Installment_Percentage::with('user')->get();
        
     }
 
