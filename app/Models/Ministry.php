@@ -9,4 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Ministry extends Model
 {
     use HasFactory,SoftDeletes;
+
+    public function ministryPercentage()
+    {
+        return $this->hasOne(Ministry_Percentage::class ,'id','ministry_percentage_id');
+    }
 }

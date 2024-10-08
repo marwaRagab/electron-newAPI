@@ -9,4 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Court extends Model
 {
     use HasFactory ,SoftDeletes;
+    public function government()
+    {
+        return $this->belongsTo(Governorate::class,'governorate_id');
+    }
 }

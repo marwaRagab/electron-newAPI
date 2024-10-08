@@ -10,6 +10,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CourtController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\RegionController;
+use App\Http\Controllers\MinistryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\GovernorateController;
@@ -58,6 +59,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource( 'ministryPercentage', MinistryPercentageController::class);
     Route::apiResource( 'policeSatations', PoliceStationController::class);
     Route::apiResource( 'regions', RegionController::class);
+    Route::apiResource( 'ministries', MinistryController::class);
     Route::get('/users',[LoginController::class, 'getall']);
     Route::get('/users/show/{id}',[LoginController::class, 'show']);
     Route::get('/users/edit/{id}',[LoginController::class, 'edit']);
