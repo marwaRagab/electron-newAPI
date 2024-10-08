@@ -17,6 +17,7 @@ use App\Http\Controllers\NationalityController;
 use App\Http\Controllers\PoliceStationController;
 use App\Http\Controllers\MinistryPercentageController;
 use App\Http\Controllers\InstallmentPercentageController;
+use App\Http\Controllers\TransactionsCompletedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,5 +63,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users/edit/{id}',[LoginController::class, 'edit']);
     Route::put('/users/{id}', [LoginController::class, 'update']);
     Route::delete('/users/{id}', [LoginController::class, 'destroy']);
-    
+    Route::apiResource( 'transactions_completed', TransactionsCompletedController::class);
 });
