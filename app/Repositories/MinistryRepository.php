@@ -38,9 +38,10 @@ class MinistryRepository implements MinistryRepositoryInterface
         $data = new Ministry;
         $data->name_ar = $request->name_ar;
         $data->name_en = $request->name_en;
-        $data->date = Carbon::createFromFormat('d-m-Y', $request->date)->format('Y-m-d H:i:s');
+        // $data->date = Carbon::createFromFormat('d-m-Y', )->format('Y-m-d H:i:s');
+        $data->date = Carbon::parse($request->date)->format('Y-m-d H:i:s');
         // $data->percent = $request->percent;
-        $data->ministry_percentage_id = $request->percent;
+        $data->ministry_percentage_id = $request->ministry_percentage_id;
         $data->created_by = Auth::user()->id;
         $data->updated_by = Auth::user()->id;
         $data->save();

@@ -63,14 +63,14 @@ class MinistryController extends Controller
             'name_ar.required' => 'الاسم بالعربى  مطلوب.',
             'name_en.required' => 'الاسم بالانجليزية  مطلوب.',
             'date.required' => 'التاريخ   مطلوب.',
-            'percent.required' => 'النسب   مطلوب.',
+            // 'percent.required' => 'النسب   مطلوب.',
         ];
 
         $validatedData = Validator::make($request->all(), [
             'name_ar' => 'required',
             'name_en' => 'required',
             'date'=>'required',
-            'percent'=>'required',
+            // 'percent'=>'required',
         ], $messages);
 
         if ($validatedData->fails()) {
