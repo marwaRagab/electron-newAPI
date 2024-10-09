@@ -5,9 +5,9 @@ namespace App\Repositories;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
-use App\Models\Ministry_Percentage;
 use Illuminate\Support\Facades\Auth;
 use App\Interfaces\MinistryPercentageRepositoryInterface;
+use App\Models\Ministry_Percentage;
 
 
 class MinistryPercentageRepository implements MinistryPercentageRepositoryInterface
@@ -15,7 +15,7 @@ class MinistryPercentageRepository implements MinistryPercentageRepositoryInterf
     
     public function index()
     {
-        return Ministry_Percentage::with('user')->get();
+        return Ministry_Percentage::all();
        
     }
 
