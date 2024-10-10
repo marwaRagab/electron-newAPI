@@ -18,7 +18,7 @@ class PoliceStationRepository implements PoliceStationRepositoryInterface
 
     public function index()
     {
-        return Police_station::with('region')->get();
+        return Police_station::with('region', 'user')->get();
        
     }
     

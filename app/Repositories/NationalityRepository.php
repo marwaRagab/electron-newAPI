@@ -19,7 +19,7 @@ class NationalityRepository implements NationalityRepositoryInterface
 
     public function index()
     {
-        return Nationality::all();
+        return Nationality::with('user')->get();
        
     }
 

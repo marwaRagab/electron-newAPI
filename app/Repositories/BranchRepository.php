@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 
-use App\Models\Branch;
 use Inertia\Inertia;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +15,7 @@ class BranchRepository implements BranchRepositoryInterface
     
     public function index()
     {
-        return Branch::all();
+        return Branch::with('user')->get();
        
     }
 
