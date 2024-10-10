@@ -3,13 +3,13 @@
 namespace App\Repositories;
 
 use Inertia\Inertia;
-use App\Models\Region;
-use App\Models\Governorate;
 use App\Models\Nationality;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
 use App\Interfaces\RegionRepositoryInterface;
+use App\Models\Region;
+use App\Models\Governorate;
 
 
 class RegionRepository implements RegionRepositoryInterface
@@ -18,7 +18,7 @@ class RegionRepository implements RegionRepositoryInterface
 
     public function index()
     {
-        return Region::with('government' , 'user')->get();
+        return Region::with('government')->get();
        
     }
 
