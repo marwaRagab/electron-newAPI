@@ -23,7 +23,6 @@ class MinistryRepository implements MinistryRepositoryInterface
        
     }
 
-
     public function show($id)
     {
         return Ministry::findOrFail($id);

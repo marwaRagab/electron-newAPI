@@ -3,13 +3,13 @@
 namespace App\Repositories;
 
 use Inertia\Inertia;
+use App\Models\Governorate;
 use App\Models\Nationality;
 use Illuminate\Http\Request;
+use App\Models\Police_station;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
 use App\Interfaces\PoliceStationRepositoryInterface;
-use App\Models\Police_station;
-use App\Models\Governorate;
 
 
 class PoliceStationRepository implements PoliceStationRepositoryInterface
@@ -21,8 +21,7 @@ class PoliceStationRepository implements PoliceStationRepositoryInterface
         return Police_station::with('region', 'user')->get();
        
     }
-
-
+    
     public function show($id)
     {
         return Police_station::findOrFail($id);

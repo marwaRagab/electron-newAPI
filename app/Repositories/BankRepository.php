@@ -19,7 +19,6 @@ class BankRepository implements BankRepositoryInterface
        
     }
 
-
     public function show($id)
     {
         return Bank::findOrFail($id);

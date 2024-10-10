@@ -19,7 +19,6 @@ class MinistryPercentageRepository implements MinistryPercentageRepositoryInterf
        
     }
 
-
     public function show($id)
     {
         return Ministry_Percentage::findOrFail($id);

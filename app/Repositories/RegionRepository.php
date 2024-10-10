@@ -22,7 +22,6 @@ class RegionRepository implements RegionRepositoryInterface
        
     }
 
-
     public function show($id)
     {
         return Region::findOrFail($id);

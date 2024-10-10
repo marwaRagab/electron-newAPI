@@ -23,7 +23,6 @@ class NationalityRepository implements NationalityRepositoryInterface
        
     }
 
-
     public function show($id)
     {
         return Nationality::findOrFail($id);

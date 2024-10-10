@@ -19,7 +19,6 @@ class BranchRepository implements BranchRepositoryInterface
        
     }
 
-
     public function show($id)
     {
         return Branch::findOrFail($id);

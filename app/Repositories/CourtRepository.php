@@ -21,7 +21,6 @@ class CourtRepository implements CourtRepositoryInterface
        
     }
 
-
     public function show($id)
     {
         return Court::findOrFail($id);

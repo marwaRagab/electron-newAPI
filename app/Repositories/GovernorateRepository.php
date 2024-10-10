@@ -24,7 +24,6 @@ class GovernorateRepository implements GovernorateRepositoryInterface
        
     }
 
-
     public function show($id)
     {
         return Governorate::findOrFail($id);

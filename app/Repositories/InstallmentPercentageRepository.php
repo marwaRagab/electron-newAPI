@@ -19,7 +19,6 @@ class InstallmentPercentageRepository implements InstallmentPercentageRepository
        
     }
 
-
     public function show($id)
     {
         return Installment_Percentage::findOrFail($id);
