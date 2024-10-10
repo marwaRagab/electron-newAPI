@@ -3,12 +3,12 @@
 namespace App\Repositories;
 
 use Inertia\Inertia;
-use App\Models\Governorate;
 use App\Models\Nationality;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
 use App\Interfaces\GovernorateRepositoryInterface;
+use App\Models\Governorate;
 
 class GovernorateRepository implements GovernorateRepositoryInterface
 {
@@ -20,7 +20,7 @@ class GovernorateRepository implements GovernorateRepositoryInterface
 
     public function index()
     {
-        return Governorate::with('user')->withCount('region')->get();
+        return Governorate::withCount('region')->get();
        
     }
 

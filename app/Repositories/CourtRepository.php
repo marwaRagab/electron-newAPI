@@ -3,13 +3,13 @@
 namespace App\Repositories;
 
 use Inertia\Inertia;
-use App\Models\Court;
-use App\Models\Governorate;
 use App\Models\Nationality;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
 use App\Interfaces\CourtRepositoryInterface;
+use App\Models\Court;
+use App\Models\Governorate;
 
 class CourtRepository implements CourtRepositoryInterface
 {
@@ -17,7 +17,7 @@ class CourtRepository implements CourtRepositoryInterface
 
     public function index()
     {
-        return Court::with('government' ,'user')->get();
+        return Court::with('government')->get();
        
     }
 

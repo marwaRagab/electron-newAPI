@@ -15,7 +15,7 @@ class PermissionRepository implements PermissionRepositoryInterface
     
     public function index()
     {
-        // $data = Permission::whereNull('parent_id')->get();
+        $data = Permission::whereNull('parent_id')->with('children')->get();
         // foreach ($data as $item) {
         //     return $item->with('children');
         //     // $data = $data->with('childrenRecursive');
@@ -28,8 +28,8 @@ class PermissionRepository implements PermissionRepositoryInterface
         //     // }
         // }
         // dd($data);
-        // return $data;
-        return Permission::with('children')->get();
+        return $data;
+        // return Permission::with('children')->get();
     }
 
 

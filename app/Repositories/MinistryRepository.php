@@ -8,9 +8,9 @@ use App\Models\Ministry;
 use Illuminate\Http\Request;
 // use App\Interfaces\MinistryRepositoryInterface;
 use Yajra\DataTables\DataTables;
-use App\Models\Ministry_Percentage;
 use Illuminate\Support\Facades\Auth;
 use App\Interfaces\MinistryRepositoryInterface;
+use App\Models\Ministry_Percentage;
 
 class MinistryRepository implements MinistryRepositoryInterface
 {
@@ -19,7 +19,7 @@ class MinistryRepository implements MinistryRepositoryInterface
     {
         // $data['Ministry'] =Ministry::with('ministryPercentage')->get();
         // $data['ministryPercentage'] =Ministry_Percentage::all();
-        return Ministry::with('ministryPercentage' , 'user')->get();
+        return Ministry::with('ministryPercentage')->get();
        
     }
 
