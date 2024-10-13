@@ -15,7 +15,7 @@ class RoleRepository implements RoleRepositoryInterface
     
     public function index()
     {
-        return Role::all();
+        return Role::with('user')->get();
        
     }
 
