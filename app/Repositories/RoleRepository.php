@@ -31,6 +31,7 @@ class RoleRepository implements RoleRepositoryInterface
     }
     public function store(Request $request)
     {
+        dd($request);
         $data = new Role;
         $data->name_ar = $request->name_ar;
         $data->name_en = $request->name_en;
