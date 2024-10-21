@@ -10,6 +10,8 @@ class Installment_Client extends Model
 {
     use HasFactory,SoftDeletes;
 
+    protected $table = 'installment_clients';
+
     public function user()
     {
         return $this->belongsTo(User::class, 'created_by');

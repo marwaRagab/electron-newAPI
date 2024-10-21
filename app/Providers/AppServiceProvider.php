@@ -24,6 +24,7 @@ use App\Interfaces\RegionRepositoryInterface;
 use App\Repositories\PoliceStationRepository;
 use App\Interfaces\MinistryRepositoryInterface;
 use App\Interfaces\PermissionRepositoryInterface;
+use App\Repositories\InstallmentClientRepository;
 use App\Interfaces\GovernorateRepositoryInterface;
 use App\Interfaces\NationalityRepositoryInterface;
 use App\Repositories\CommuncationMethodRepository;
@@ -32,6 +33,7 @@ use App\Interfaces\PoliceStationRepositoryInterface;
 use App\Repositories\InstallmentPercentageRepository;
 use App\Repositories\TransactionsCompletedRepository;
 use App\Interfaces\CommuncationMethodRepositoryInterface;
+use App\Interfaces\InstallmentClientsRepositoryInterface;
 use App\Interfaces\MinistryPercentageRepositoryInterface;
 use App\Interfaces\InstallmentPercentageRepositoryInterface;
 use App\Interfaces\TransactionsCompletedRepositoryInterface;
@@ -60,6 +62,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(BokerRepositoryInterface::class, BokerRepository::class);
         $this->app->bind(CommuncationMethodRepositoryInterface::class, CommuncationMethodRepository::class);
         $this->app->bind(TransactionsCompletedRepositoryInterface::class, TransactionsCompletedRepository::class);
+        $this->app->bind(InstallmentClientsRepositoryInterface::class, InstallmentClientRepository::class);
 
     }
 
