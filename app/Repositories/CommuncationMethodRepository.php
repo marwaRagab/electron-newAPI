@@ -6,28 +6,24 @@ namespace App\Repositories;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use App\Models\CommuncationMethod;
 use App\Models\TransactionCompleted;
 use Illuminate\Support\Facades\Auth;
-use App\Interfaces\TransactionsCompletedRepositoryInterface;
+use App\Interfaces\CommuncationMethodRepositoryInterface;
 
-class TransactionsCompletedRepository implements TransactionsCompletedRepositoryInterface
+class CommuncationMethodRepository implements CommuncationMethodRepositoryInterface
 {
     
     public function index()
     {
-        $data = TransactionCompleted::with('user')->get();
-        foreach ($data as $item) {
-            $item->Communication_method = $item->communcation_method();
-        }
-        
-        return $data;
+        return CommuncationMethod::with('user')->get();
        
     }
 
 
     public function show($id)
     {
-        return TransactionCompleted::findOrFail($id);
+        return CommuncationMethod::findOrFail($id);
     }
 
     public function  create()
@@ -36,15 +32,12 @@ class TransactionsCompletedRepository implements TransactionsCompletedRepository
     }
     public function store(Request $request)
     {
-        // dd($request);
-        $data = new TransactionCompleted;
+        $data = new CommuncationMethod;
         $data->name_ar = $request->name_ar;
         $data->name_en = $request->name_en;
-        $data->email = $request->email;
-        $data->whatsapp = $request->whatsapp;
-        // $data->communcation_method_id = $request->communcation_method_id;
         
-        $data->Communication_method = implode(',',$request->communcation_method);
+        
+        // $data->active = $request->active;
         $data->created_by = Auth::user()->id;
         $data->updated_by = Auth::user()->id;
         $data->save();
@@ -54,18 +47,15 @@ class TransactionsCompletedRepository implements TransactionsCompletedRepository
 
     public function  edit($id)
     {
-        return TransactionCompleted::findOrFail($id);
+        return CommuncationMethod::findOrFail($id);
     }
 
     public function update($id, Request $request)
     {
-        $data = TransactionCompleted::findOrFail($id);
+        $data = CommuncationMethod::findOrFail($id);
         // dd($request->name_ar);
         $data->name_ar = $request->name_ar ?? $data->name_ar;
         $data->name_en = $request->name_en ?? $data->name_en;
-        $data->email = $request->email ?? $data->email;
-        $data->whatsapp = $request->whatsapp ?? $data->whatsapp;
-        $data->Communication_method = $request->Communication_method ?? $data->Communication_method;
         
         // $data->active = $request->active ?? $data->active;
         $data->updated_by = Auth::user()->id;
@@ -75,7 +65,7 @@ class TransactionsCompletedRepository implements TransactionsCompletedRepository
 
     public function destroy($id)
     {
-        $data = TransactionCompleted::findOrFail($id);
+        $data = CommuncationMethod::findOrFail($id);
 
         // Perform soft delete
         $data->delete();

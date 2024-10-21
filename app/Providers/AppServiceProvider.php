@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Boker;
 use App\Models\Branch;
 use App\Repositories\BankRepository;
 use App\Repositories\RoleRepository;
+use App\Repositories\BokerRepository;
 use App\Repositories\CourtRepository;
 use App\Repositories\BranchRepository;
 use App\Repositories\RegionRepository;
@@ -15,6 +17,7 @@ use App\Interfaces\BankRepositoryInterface;
 use App\Interfaces\RoleRepositoryInterface;
 use App\Repositories\GovernorateRepository;
 use App\Repositories\NationalityRepository;
+use App\Interfaces\BokerRepositoryInterface;
 use App\Interfaces\CourtRepositoryInterface;
 use App\Interfaces\BranchRepositoryInterface;
 use App\Interfaces\RegionRepositoryInterface;
@@ -23,11 +26,15 @@ use App\Interfaces\MinistryRepositoryInterface;
 use App\Interfaces\PermissionRepositoryInterface;
 use App\Interfaces\GovernorateRepositoryInterface;
 use App\Interfaces\NationalityRepositoryInterface;
+use App\Repositories\CommuncationMethodRepository;
 use App\Repositories\MinistryPercentageRepository;
 use App\Interfaces\PoliceStationRepositoryInterface;
 use App\Repositories\InstallmentPercentageRepository;
+use App\Repositories\TransactionsCompletedRepository;
+use App\Interfaces\CommuncationMethodRepositoryInterface;
 use App\Interfaces\MinistryPercentageRepositoryInterface;
 use App\Interfaces\InstallmentPercentageRepositoryInterface;
+use App\Interfaces\TransactionsCompletedRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -50,6 +57,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(InstallmentPercentageRepositoryInterface::class, InstallmentPercentageRepository::class);
         $this->app->bind(MinistryPercentageRepositoryInterface::class, MinistryPercentageRepository::class);
         $this->app->bind(MinistryRepositoryInterface::class, MinistryRepository::class);
+        $this->app->bind(BokerRepositoryInterface::class, BokerRepository::class);
+        $this->app->bind(CommuncationMethodRepositoryInterface::class, CommuncationMethodRepository::class);
+        $this->app->bind(TransactionsCompletedRepositoryInterface::class, TransactionsCompletedRepository::class);
 
     }
 

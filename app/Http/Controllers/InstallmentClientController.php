@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Installment_Client;
 use App\Http\Requests\StoreInstallment_ClientRequest;
 use App\Http\Requests\UpdateInstallment_ClientRequest;
+use App\Interfaces\InstallmentClientsRepositoryInterface;
 
 class InstallmentClientController extends Controller
 {
@@ -13,6 +14,15 @@ class InstallmentClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     protected $InstallmentClientsRepository;
+
+     public function __construct(InstallmentClientsRepositoryInterface $InstallmentClientsRepository)
+     {
+         $this->InstallmentClientsRepository = $InstallmentClientsRepository;
+     }
+
+     
     public function index()
     {
         //
