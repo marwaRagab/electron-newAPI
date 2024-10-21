@@ -2,14 +2,14 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\InstallmentClientsRepositoryInterface;
-use App\Models\Installment_Client;
 use App\Models\Role;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use App\Models\Installment_Client;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Interfaces\InstallmentClientsRepositoryInterface;
 
 
 class InstallmentClientRepository implements InstallmentClientsRepositoryInterface
@@ -18,7 +18,6 @@ class InstallmentClientRepository implements InstallmentClientsRepositoryInterfa
     public function index()
     {
         return Installment_Client::with('user','region','ministry_working','bank','Boker','governorate')->get();
-       
     }
 
 
@@ -40,13 +39,14 @@ class InstallmentClientRepository implements InstallmentClientsRepositoryInterfa
         $data->salary = $request->salary;
         $data->civil_number = $request->civil_number;
         $data->phone = $request->phone;
-        $data->notes = $request->notes;
-        $data->status = $request->status;
+        $data->notes = $request->notes ?? null;
+        $data->status = $request->status ?? "advanced";
         $data->bank_id = $request->bank_id ?? null;
         $data->area_id = $request->area_id ?? null;
         $data->ministry_id = $request->ministry_id ?? null;
         $data->governorate_id = $request->governorate_id ?? null;
         $data->boker_id = $request->boker_id ?? null;
+        $data->installment_total =  $request->installment_total ?? null;
         $data->created_by = Auth::user()->id;
         $data->updated_by = Auth::user()->id;
         $data->save();
