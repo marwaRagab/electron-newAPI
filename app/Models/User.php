@@ -97,4 +97,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(member::class, 'created_by');
     }
+
+    public function Installment_Client()
+    {
+        return $this->hasMany(Installment_Client::class, 'created_by');
+    }
 }
