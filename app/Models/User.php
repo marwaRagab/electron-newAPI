@@ -93,5 +93,8 @@ class User extends Authenticatable
         return $this->hasMany(Police_station::class, 'created_by');
     }
 
-    
+    public function members()
+    {
+        return $this->hasMany(member::class, 'created_by');
+    }
 }
